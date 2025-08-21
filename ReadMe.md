@@ -49,7 +49,16 @@ sudo docker run -itd -p 8001:80 --name kodoffice --restart always kodcloud/kodof
 只要重建了這個 onlyoffice 容器都要作一次這件事。
 
 4. 可道雲上面要開 onlyoffice 的外掛，然後記得設定頁面 "onlyoffice 服務"上要打上你的網址 "https://your-domain:8443/web" 一定要用這種格式來打，否則沒辦法測試正確，其餘的設定通通不要動。
+設定完，記得按下檢測伺服器，會顯示通過檢測畫面，沒過不要緊張，可能只是服務還沒啟動完成，你可直接訪問擬設定的網址，會顯示 Success，那就是過了。
+
+設定頁面圖 :
 ![alt text](image.png)
+
+檢測頁面訪問 :
+![alt text](image-1.png)
+
+檢測成功圖 :
+![alt text](image-2.png)
 
 
 ## 步驟 3
