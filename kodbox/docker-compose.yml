@@ -1,0 +1,35 @@
+services:
+  mariadb:
+    image: mariadb:lts
+    command: --transaction-isolation=READ-COMMITTED
+    restart: always
+    volumes:
+      - "./db:/var/lib/mysql"                      #./db是数据库持久化目录，可以修改
+      # - "./etc/mysql/conf.d:/etc/mysql/conf.d"   #增加自定义mysql配置
+    environment:
+      - MYSQL_ROOT_PASSWORD=YOUR_DB_PASSWORD
+      - MARIADB_AUTO_UPGRADE=1
+      - MARIADB_DISABLE_UPGRADE_BACKUP=1
+    env_file:
+      - db.env
+      
+  kodbox:
+    image: kodcloud/kodbox
+    restart: always
+    ports:
+      - 8000:80  #左边80是使用端口，可以修改
+    volumes:
+      # - "/etc/kodbox/ssl:/etc/nginx/ssl" # 用NGINX反向代理，這個部分免作
+      - "./site:/var/www/html"             #./site是站点目录位置，可以修改
+    environment:
+      - MYSQL_HOST=db
+      - REDIS_HOST=redis
+    env_file:
+      - db.env
+    depends_on:
+      - db
+      - redis
+
+  redis:
+    image: redis:alpine
+    restart: always
