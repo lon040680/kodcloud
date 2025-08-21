@@ -21,8 +21,8 @@ services:
     volumes:
       # - "/etc/kodbox/ssl:/etc/nginx/ssl" # 用NGINX反向代理，這個部分免作
       - "./site:/var/www/html"             #./site是站点目录位置，可以修改
-      - /data/sdb1:/mnt/sdb1
-      - /data/sdc1:/mnt/sdc1
+      # - /data/sdb1:/mnt/sdb1             # 可自行掛載額外硬碟
+      # - /data/sdc1:/mnt/sdc1             # 可自行掛載額外硬碟
     environment:
       - MYSQL_HOST=db
       - REDIS_HOST=redis
