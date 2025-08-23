@@ -65,7 +65,7 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
 (6) bash documentserver-update-securelink.sh 這個指令重啟服務。
 
 
-4. 可道雲上面要開 onlyoffice 的外掛，然後記得設定頁面 "onlyoffice 服務"上要打上你的網址 "https://your-domain:8443/web" 一定要用這種格式來打，否則沒辦法測試正確，其餘的設定通通不要動。
+5. 可道雲上面要開 onlyoffice 的外掛，然後記得設定頁面 "onlyoffice 服務"上要打上你的網址 "https://your-domain:8443/web" 一定要用這種格式來打，否則沒辦法測試正確，其餘的設定通通不要動。
 設定完，記得按下檢測伺服器，會顯示通過檢測畫面，沒過不要緊張，可能只是服務還沒啟動完成，你可直接訪問擬設定的網址，會顯示 Success，那就是過了。
 
 設定頁面圖 :
@@ -76,6 +76,8 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
 
 檢測成功圖 :
 ![alt text](image-2.png)
+
+備註 : 如果使用 onlyoffice 最新官方版啟動，設定就要變成 https://your-domain:8443/
 
 
 ## 步驟 3
@@ -93,6 +95,8 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
   openssl x509 -req -days 365 -in yourdomain.csr -signkey privkey.pem -out fullchain.pem
 ```
 2. 如果你有子彈買 cloudflare 的付費憑證，那就去買吧，我都放在哪裡了 !! 然後請跳過上面的自簽憑證。
+
+3. cloudflare 其實也有免費的憑證簽發，不會的再私我，我會教你。
 
 ## 步驟 4
 ### 啟動 NGINX 反向代理 !! 至關重要，沒啟動啥都訪問不到蛤 !!
