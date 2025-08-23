@@ -69,12 +69,15 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
 設定完，記得按下檢測伺服器，會顯示通過檢測畫面，沒過不要緊張，可能只是服務還沒啟動完成，你可直接訪問擬設定的網址，會顯示 Success，那就是過了。
 
 設定頁面圖 :
+
 ![alt text](image.png)
 
 檢測頁面訪問 :
+
 ![alt text](image-1.png)
 
 檢測成功圖 :
+
 ![alt text](image-2.png)
 
 備註 : 如果使用 onlyoffice 最新官方版啟動，設定就要變成 https://your-domain:8443/
