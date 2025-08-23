@@ -52,7 +52,6 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
 # 重啟服務
   bash documentserver-update-securelink.sh
 ```
-只要重建了這個 onlyoffice 容器都要作一次這件事。
 
 4. 新增官方 onlyoffice 啟動方法，上述 1 ~ 3 還是要做，但要加做以下步驟:  
   (1) 先把官方容器新增 vim 編輯器 apt-get update 接著 apt install vim  
@@ -64,7 +63,8 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
   (5) 修改 default.json 裡面把如圖 "allowPrivateIPAddress":false 設定上去，之所以要設定這 個，是因為要讓反向代理 8443 轉 http://內部IP:8001 這個設定能正常訪問。  
   
   ![alt text](image-4.png)  
-  (6) bash documentserver-update-securelink.sh 這個指令重啟服務。  
+  (6) 一樣用上述指令: bash documentserver-update-securelink.sh 這個指令重啟服務。  
+  (7) 如果有重啟服務，最好都進容器再檢查一下上述設定，都再做一次會比較保險。
 
 
 5. 可道雲上面要開 onlyoffice 的外掛，然後記得設定頁面 "onlyoffice 服務"上要打上你的網址 "https://your-domain:8443/web" 一定要用這種格式來打，否則沒辦法測試正確，其餘的設定通通不要動。
