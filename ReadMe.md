@@ -133,5 +133,5 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
 可道雲與Onlyoffice 版本與版權最終所有權屬於可道雲以及Onlyoffice.
 
 ### 更新紀錄
-20250821 優化 nginx.conf 對 cloudflare SSL認證機制
-20250823 新增官方 onlyoffice 啟動辦法
+20250821 優化 nginx.conf 對 cloudflare SSL認證機制  
+20250823 新增官方 onlyoffice 啟動辦法  
