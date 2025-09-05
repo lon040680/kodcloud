@@ -51,16 +51,18 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
   sed -i.bak '/rejectUnauthorized/ s/true/false/g' /etc/onlyoffice/documentserver/default.json
 # 重啟服務
   bash documentserver-update-securelink.sh
+
+# 如果要做第 4. 不要急著退出
 ```
 
 4. 新增官方 onlyoffice 啟動方法，上述 1 ~ 3 還是要做，但要加做以下步驟:  (注意上面第 3. #進入容器 的容器名要記得改)  
   (1) 先把官方容器新增 vim 編輯器 apt-get update 接著 apt install vim  
-  (2) vim /etc/onlyoffice/DocumentServer/config/local.json  
-  (3) 在 local.json 找到 token 設定區如圖標註區改 false，secret 區塊保持原本的token即可不用動，這部分因為快速啟動時已經有做預設，所以基本已經是設定好，發現不一樣再改就好。  
+  (2) vim /etc/onlyoffice/documentserver/local.json  
+  (3) 在 local.json 找到 token 設定區如下圖標註區改 false，secret 區塊保持原本的token即可不用動，這部分因為快速啟動時已經有做預設，所以基本已經是設定好，發現不一樣再改就好。  
   
   ![alt text](image-3.png)  
-  (4) vim /etc/onlyoffice/DocumentServer/config/default.json  
-  (5) 修改 default.json 裡面把如圖 "allowPrivateIPAddress":false 設定上去，之所以要設定這 個，是因為要讓反向代理 8443 轉 http://內部IP:8001 這個設定能正常訪問。  
+  (4) vim /etc/onlyoffice/documentserver/default.json  
+  (5) 修改 default.json 裡面把如下圖 "allowPrivateIPAddress":false 改成 true，之所以要設定這 個，是因為要讓反向代理 8443 轉 http://內部IP:8001 這個設定能正常訪問。  
   
   ![alt text](image-4.png)  
   (6) 一樣用上述指令: bash documentserver-update-securelink.sh 這個指令重啟服務。  
