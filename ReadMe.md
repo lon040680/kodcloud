@@ -53,7 +53,7 @@ sudo docker run -itd -p 8001:80 --name onlyoffice --restart always -e JWT_ENABLE
   bash documentserver-update-securelink.sh
 ```
 
-4. 新增官方 onlyoffice 啟動方法，上述 1 ~ 3 還是要做，但要加做以下步驟:  (注意第三步驟 #進入容器 的容器名要記得改) 
+4. 新增官方 onlyoffice 啟動方法，上述 1 ~ 3 還是要做，但要加做以下步驟:  (注意第三步驟 #進入容器 的容器名要記得改)  
   (1) 先把官方容器新增 vim 編輯器 apt-get update 接著 apt install vim  
   (2) vim /etc/onlyoffice/DocumentServer/config/local.json  
   (3) 在 local.json 找到 token 設定區如圖標註區改 false，secret 區塊保持原本的token即可不用動，這部分因為快速啟動時已經有做預設，所以基本已經是設定好，發現不一樣再改就好。  
