@@ -1,6 +1,6 @@
 services:
   mariadb:
-    image: mariadb:lats
+    image: mariadb:last
     command: --transaction-isolation=READ-COMMITTED
     restart: always
     volumes:
